@@ -27,9 +27,6 @@ export default function App() {
   const [members, setMembers] = useState<Member[]>(createDefaultMembers)
   const [result, setResult] = useState<CalculationResult | null>(null)
 
-  const totalRatio = members.reduce((sum, m) => sum + (Number(m.ratio) || 0), 0)
-  const canCalculate = totalRatio === 100
-
   function calculate() {
     const totalRevenue = projects.reduce((sum, p) => sum + parseNumber(p.revenue), 0)
     const totalProfit = projects.reduce(
@@ -85,17 +82,10 @@ export default function App() {
           <button
             className="btn-primary w-full sm:w-auto sm:px-16"
             onClick={calculate}
-            disabled={!canCalculate}
           >
             계산하기
           </button>
         </div>
-
-        {!canCalculate && totalRatio !== 0 && (
-          <p className="text-center text-sm text-red-500">
-            분배율 합계가 100%가 되어야 계산할 수 있습니다. (현재 {totalRatio}%)
-          </p>
-        )}
 
         {/* 결과 영역 */}
         {result && (

@@ -8,7 +8,6 @@ interface Props {
 
 export default function MemberSection({ members, onChange }: Props) {
   const totalRatio = members.reduce((sum, m) => sum + (Number(m.ratio) || 0), 0)
-  const isValid = totalRatio === 100
 
   function update(id: string, field: keyof Member, raw: string) {
     onChange(
@@ -36,20 +35,10 @@ export default function MemberSection({ members, onChange }: Props) {
     <div className="card">
       <div className="flex items-center justify-between mb-4">
         <h2 className="section-title mb-0">C. 분배 인원</h2>
-        <span
-          className={`text-sm font-semibold tabular-nums transition-colors ${
-            isValid ? 'text-green-600' : 'text-red-500'
-          }`}
-        >
-          현재 합계: {totalRatio}% / 100%
+        <span className="text-sm font-semibold tabular-nums text-gray-500">
+          현재 합계: {totalRatio}%
         </span>
       </div>
-
-      {!isValid && totalRatio > 0 && (
-        <p className="text-xs text-red-500 mb-3">
-          분배율 합계가 100%여야 계산이 가능합니다.
-        </p>
-      )}
 
       <div className="space-y-2">
         <div className="hidden sm:grid sm:grid-cols-[1fr_120px_32px] gap-2 px-1">
