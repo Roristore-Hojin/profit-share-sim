@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command node, npm, pnpm, yarn -ErrorAction SilentlyContinue)",
+      "PowerShell(where.exe node 2>$null; where.exe npm 2>$null; ls \"$env:APPDATA\\\\npm\" -ErrorAction SilentlyContinue | Select-Object -First 5 Name; ls \"$env:ProgramFiles\\\\nodejs\" -ErrorAction SilentlyContinue | Select-Object -First 5 Name)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;\" + $env:PATH; Set-Location \"c:\\\\Users\\\\82102\\\\OneDrive\\\\Desktop\\\\호진폴더\\\\이익분배 시뮤레이터\"; & \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" install 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;\" + $env:PATH; Set-Location \"c:\\\\Users\\\\82102\\\\OneDrive\\\\Desktop\\\\호진폴더\\\\이익분배 시뮤레이터\"; & \"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\" run build 2>&1)",
+      "PowerShell($env:PATH = \"C:\\\\Program Files\\\\nodejs;\" + $env:PATH; Set-Location \"c:\\\\Users\\\\82102\\\\OneDrive\\\\Desktop\\\\호진폴더\\\\이익분배 시뮤레이터\"; Start-Process \"C:\\\\Program Files\\\\nodejs\\\\node.exe\" -ArgumentList \"node_modules\\\\.bin\\\\vite\" -PassThru | Select-Object Id)",
+      "PowerShell(where.exe gh 2>$null; ls \"$env:LOCALAPPDATA\\\\Programs\\\\GitHub CLI\" -ErrorAction SilentlyContinue; ls \"C:\\\\Program Files\\\\GitHub CLI\" -ErrorAction SilentlyContinue)",
+      "PowerShell(winget install --id GitHub.cli --silent --accept-package-agreements --accept-source-agreements 2>&1)",
+      "PowerShell($git = \"C:\\\\Program Files\\\\Git\\\\cmd\\\\git.exe\"; $dir = \"c:\\\\Users\\\\82102\\\\OneDrive\\\\Desktop\\\\호진폴더\\\\이익분배 시뮤레이터\"; & $git -C $dir init; & $git -C $dir add .; & $git -C $dir commit -m \"init: 이익 분배 시뮬레이터 초기 커밋\" 2>&1)"
+    ]
+  }
+}
